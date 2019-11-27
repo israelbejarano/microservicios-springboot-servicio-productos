@@ -1,3 +1,4 @@
+// @autor: Israel Bejarano
 package com.microservicios.springboot.app.productos.models.entity;
 
 import java.io.Serializable;
