@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "productos")
@@ -25,6 +26,13 @@ public class Producto implements Serializable {
 	@Column(name = "create_at")
 	@Temporal(TemporalType.DATE)
 	private Date createAt;
+	
+	// el @Transient sirve para indicar que no es un campo persistente
+	// lo estamos usando para ver en Postman que puerto estamos atacando para
+	// comprobar el balanceo de carga de Ribbon
+	@Transient
+	private Integer port;
+	
 	public Long getId() {
 		return id;
 	}
@@ -50,6 +58,12 @@ public class Producto implements Serializable {
 		this.createAt = createAt;
 	}
 	
-	private static final long serialVersionUID = -4884410723265652136L;	
+	public Integer getPort() {
+		return port;
+	}
+	public void setPort(Integer port) {
+		this.port = port;
+	}
 
+	private static final long serialVersionUID = -4884410723265652136L;	
 }
